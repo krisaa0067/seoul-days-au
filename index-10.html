@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f0eb">
+<meta name="description" content="AU romance sekolah interaktif bergaya Korean aesthetic.">
+<title>Seoul Days — School Romance AU</title>
+<style>
+:root{--ink:#302b2b;--muted:#827775;--cream:#f7f2ed;--pink:#e8b9c6;--rose:#b86f86;--line:#e9dfda;--white:#fffdfa;--shadow:0 18px 55px #48332b22}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#eee4df,#f9f5f1 55%,#eadfe3);color:var(--ink);font-family:Inter,"Apple SD Gothic Neo","Noto Sans",system-ui,sans-serif;min-height:100vh;display:grid;place-items:center;padding:18px}
+button,input,textarea{font:inherit}button{cursor:pointer}
+.layout{display:grid;grid-template-columns:minmax(280px,390px) minmax(250px,330px);gap:28px;align-items:center;width:min(100%,780px)}
+.phone{width:100%;height:min(790px,calc(100dvh - 36px));min-height:600px;border:8px solid #292729;border-radius:42px;background:var(--cream);box-shadow:0 25px 80px #2b1e1e35;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.notch{height:25px;background:var(--cream);display:flex;justify-content:center;align-items:center;flex-shrink:0}.notch:after{content:"";width:82px;height:15px;border-radius:12px;background:#292729}
+.status{height:27px;padding:0 20px;display:flex;justify-content:space-between;font-size:11px;font-weight:700;background:var(--cream);flex-shrink:0}
+.screen{position:relative;flex:1;overflow:hidden;background:var(--cream)}
+.home{height:100%;padding:24px 20px 18px;display:flex;flex-direction:column;background:linear-gradient(160deg,#e9d7d1 0%,#f8f0e9 42%,#e5d5dc 100%)}
+.date{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6f5c5e}.clock{font-size:54px;letter-spacing:-3px;font-weight:300;line-height:1.1;margin-top:5px}.welcome{font-family:Georgia,serif;font-size:18px;font-style:italic;margin-top:8px;color:#6d5158}
+.widget{margin:25px 0 20px;background:#fffaf6b8;border:1px solid #ffffffb8;border-radius:20px;padding:14px;display:flex;gap:12px;align-items:center;backdrop-filter:blur(10px)}
+.widget img{width:64px;height:74px;object-fit:cover;border-radius:13px;background:#d9c2c5}.widget strong{display:block;font-size:13px}.widget p{font-size:11px;line-height:1.5;color:#76686a;margin:5px 0 0}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px 10px;margin-top:auto;margin-bottom:24px}
+.app-icon{border:0;background:none;color:#493e40;padding:0;display:flex;flex-direction:column;align-items:center;gap:7px;font-size:10px}
+.iconbox{width:51px;height:51px;border-radius:17px;background:#fffaf5;box-shadow:0 5px 13px #745a5620;display:grid;place-items:center;font-size:23px;position:relative;transition:transform .15s}
+.app-icon:active .iconbox{transform:scale(.92)}.badge{position:absolute;right:-3px;top:-4px;background:#bb7185;color:white;font-size:9px;border-radius:20px;padding:3px 5px}
+.dock{display:flex;justify-content:space-around;background:#fffaf5a8;padding:11px;border:1px solid #fff;border-radius:23px;backdrop-filter:blur(12px)}
+.dock button{border:0;background:none;font-size:23px}
+.appview{height:100%;display:flex;flex-direction:column;background:#fbf8f5}
+.apphead{display:flex;align-items:center;gap:12px;padding:15px 17px;border-bottom:1px solid var(--line);background:#fffdfa;flex-shrink:0}
+.back{border:0;background:#f3e8e8;border-radius:12px;width:34px;height:34px;font-size:18px;color:#6f5159}
+.apphead h2{font-size:16px;margin:0;font-weight:700}.apphead small{font-size:10px;color:var(--muted)}
+.appbody{flex:1;overflow:auto;padding:16px;scrollbar-width:thin}
+.bottomnav{display:flex;justify-content:space-around;border-top:1px solid var(--line);padding:10px;background:#fffdfa;flex-shrink:0}
+.bottomnav button{border:0;background:none;font-size:19px;color:#88777a}
+.card{background:#fffdfa;border:1px solid var(--line);border-radius:17px;padding:14px;margin-bottom:12px}
+.card h3{margin:0 0 7px;font-size:14px}.card p{font-size:12px;line-height:1.65;margin:0;color:#685e5e}
+.pill{display:inline-block;border-radius:20px;padding:5px 9px;background:#f3e3e7;color:#8d5968;font-size:10px;margin-bottom:8px}
+.chat-list{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:#fffdfa;border:0;border-bottom:1px solid var(--line);padding:13px 4px;color:inherit}
+.avatar{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(140deg,#ecd0d7,#c5d7d0);font-size:18px;flex-shrink:0}
+.chat-list strong{font-size:12px;display:block}.chat-list small{font-size:11px;color:var(--muted);display:block;margin-top:4px}
+.messages{display:flex;flex-direction:column;gap:10px;padding-bottom:14px}.msg{max-width:82%;padding:10px 12px;border-radius:15px;font-size:12px;line-height:1.55;box-shadow:0 2px 5px #00000008}.msg.them{align-self:flex-start;background:white;border:1px solid var(--line);border-top-left-radius:4px}.msg.me{align-self:flex-end;background:#f0dce2;border-top-right-radius:4px}.msg time{display:block;text-align:right;font-size:9px;color:#95868a;margin-top:4px}
+.chat-compose{display:flex;gap:8px;padding:10px;background:white;border-top:1px solid var(--line)}.chat-compose input{min-width:0;flex:1;border:1px solid var(--line);border-radius:20px;padding:10px 13px;font-size:12px;outline:none}.send{border:0;background:#b9788b;color:white;border-radius:50%;width:38px;height:38px}
+.primary{border:0;background:#b9788b;color:white;border-radius:12px;padding:10px 13px;font-size:12px;font-weight:650}.secondary{border:1px solid var(--line);background:#fffdfa;border-radius:12px;padding:9px 12px;font-size:12px;color:#6b555b}
+input.field,textarea.field{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px;background:#fffdfa;margin:5px 0 10px;outline-color:#d6a5b2;font-size:12px}
+.post{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:14px}.post-top{display:flex;align-items:center;gap:8px;padding:11px}.post-top strong{font-size:11px}.post-photo{height:165px;display:grid;place-items:center;background:linear-gradient(135deg,#d7e0da,#f1dce0 55%,#d8c8d5);font-size:55px}.post-content{padding:12px;font-size:12px;line-height:1.6}.post-actions{display:flex;gap:14px;padding:0 12px 12px}.post-actions button{border:0;background:none;font-size:17px}.liked{color:#d45d78}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.photo{aspect-ratio:1;border:0;border-radius:8px;background:linear-gradient(135deg,#e8d5d9,#d1ded7);font-size:26px}.photo:nth-child(3n+2){background:linear-gradient(135deg,#f2e7d6,#d9c6d2)}.photo:nth-child(3n){background:linear-gradient(135deg,#d3dedb,#f0d5d9)}
+.note{width:100%;text-align:left;border:0;border-radius:13px;padding:13px;background:#fff3c9;margin-bottom:9px;color:#65543d;font-size:12px}.note:nth-child(2n){background:#e6efea;color:#456258}.note:nth-child(3n){background:#f2e2e7;color:#805865}
+.gallery-detail{position:absolute;inset:0;background:#2c2429eF;color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:25px;text-align:center;z-index:5}.gallery-detail button{position:absolute;right:18px;top:18px;border:0;border-radius:50%;width:35px;height:35px}
+.story-text{font-family:Georgia,serif;font-size:14px;line-height:1.8;color:#4d4143}.choice{display:block;width:100%;text-align:left;background:#fff;border:1px solid #e8d5dc;border-radius:13px;padding:12px;margin-top:9px;font-size:12px;color:#76505d}.choice:hover{background:#f9edf1}
+.toast{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:#342b30;color:white;padding:10px 14px;border-radius:20px;font-size:11px;white-space:nowrap;z-index:10;animation:fade 2.2s forwards}@keyframes fade{0%,75%{opacity:1}100%{opacity:0}}
+.side h1{font-family:Georgia,serif;font-size:34px;font-weight:400;line-height:1.1;margin:0 0 12px}.side p{color:#6f6260;font-size:13px;line-height:1.75}.side .tag{font-size:10px;letter-spacing:2px;color:#a16f7d;text-transform:uppercase}.side .tip{margin-top:22px;padding-top:18px;border-top:1px solid #d8c8c3;font-size:12px;color:#766764;line-height:1.7}.side code{background:#e9ded9;padding:2px 5px;border-radius:5px}
+@media(max-width:700px){body{padding:0;background:#f7f2ed;display:block}.layout{display:block;width:100%}.phone{width:100%;height:100dvh;min-height:560px;border:0;border-radius:0;box-shadow:none}.side{display:none}.notch{height:20px}}
+</style>
+</head>
+<body>
+<div class="layout">
+  <main class="phone" aria-label="Simulasi smartphone AU">
+    <div class="notch"></div>
+    <div class="status"><span id="statusTime">9:41</span><span>◉ ◉ ▰</span></div>
+    <section class="screen" id="screen"></section>
+  </main>
+  <aside class="side">
+    <div class="tag">Interactive school romance AU</div>
+    <h1>Seoul<br>Days.</h1>
+    <p>Sebuah kisah tentang pesan yang salah kirim, bangku dekat jendela, dan seseorang yang diam-diam selalu menunggumu pulang.</p>
+    <p><strong>Demo AU:</strong> Han Yuna × Kang Minjae<br>Tempat: Seorin High School, Seoul</p>
+    <div class="tip"><strong>Cara memainkan</strong><br>Ketuk ikon aplikasi di layar. Buka chat untuk membalas pesan, tekan hati di feed, baca Notes, dan pilih keputusan cerita untuk membuka kelanjutan yang berbeda.</div>
+    <div class="tip">Untuk mempublikasikan: unggah file <code>index.html</code> ke repositori GitHub, lalu aktifkan <strong>Settings → Pages</strong>. Semua fitur demo berjalan tanpa server atau API eksternal.</div>
+  </aside>
+</div>
+<script>
+const $ = s => document.querySelector(s);
+const screen = $('#screen');
+let currentApp = 'home';
+let activeChat = 'minjae';
+let liked = {};
+let storyChoice = '';
+let notes = [
+  {title:'Catatan hari Senin',body:'Jangan lupa mengembalikan buku sastra ke perpustakaan. Dan jangan melihat ke bangku dekat jendela terlalu lama, Yuna.'},
+  {title:'Draft yang tidak terkirim',body:'Kang Minjae, kenapa kamu selalu tahu saat aku sedang tidak baik-baik saja?'},
+  {title:'Jadwal festival sekolah',body:'Jumat — festival musim semi. Kelas 2-3 bertugas di stan minuman. Pukul 16.00, aula utama.'}
+];
+const chats = {
+ minjae:{name:'Kang Minjae',avatar:'☁️',preview:'Kamu sudah sampai rumah?',messages:[
+  {from:'them',text:'Yuna, kamu ketinggalan buku di kelas.',time:'16.12'},
+  {from:'me',text:'Yang sampul biru? Aku baru sadar 😭',time:'16.13'},
+  {from:'them',text:'Iya. Aku bawa dulu, besok kuberikan.',time:'16.13'},
+  {from:'me',text:'Makasih, Minjae!',time:'16.14'},
+  {from:'them',text:'Kamu sudah sampai rumah?',time:'16.28'}
+ ]},
+ sohee:{name:'Park Sohee',avatar:'🌷',preview:'GIRL, aku melihat kalian di perpustakaan!',messages:[
+  {from:'them',text:'YUNAAAAA. Aku melihat kamu dan Minjae di perpustakaan tadi.',time:'16.20'},
+  {from:'me',text:'Kami cuma membahas tugas sastra 😭',time:'16.21'},
+  {from:'them',text:'Tentu. Tugas sastra yang bikin dia senyum begitu, ya?',time:'16.21'}
+ ]},
+ class:{name:'2-3 Class Group',avatar:'🎒',preview:'Besok jangan lupa rapat festival!',messages:[
+  {from:'them',text:'Ketua kelas: Besok rapat festival jam 07.40. Jangan terlambat!',time:'15.50'},
+  {from:'them',text:'Sohee: Stan kita jual strawberry milk! 🍓',time:'15.52'},
+  {from:'them',text:'Minjae: Aku bisa mengurus dekorasi.',time:'15.55'}
+ ]}
+};
+function timeNow(){return new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});}
+function toast(msg){let t=document.createElement('div');t.className='toast';t.textContent=msg;screen.appendChild(t);setTimeout(()=>t.remove(),2300);}
+function appHeader(title,sub='') {return `<header class="apphead"><button class="back" onclick="goHome()" aria-label="Kembali ke home">‹</button><div><h2>${title}</h2>${sub?`<small>${sub}</small>`:''}</div></header>`;}
+function renderHome(){
+ currentApp='home';
+ screen.innerHTML=`<div class="home">
+ <div class="date">S E O U L · MONDAY, APRIL 14</div><div class="clock" id="clock">9:41</div><div class="welcome">somewhere between friends and more ♡</div>
+ <div class="widget"><div style="font-size:31px">🌸</div><div><strong>Seorin High School</strong><p>“Kadang, cerita cinta dimulai dari pesan yang tidak sengaja terkirim.”</p></div></div>
+ <div class="apps">
+ ${appIcon('chat','💬','Messages','2')}${appIcon('instagram','📷','Instagram','')}${appIcon('gallery','🌄','Gallery','')}${appIcon('notes','📝','Notes','')}
+ ${appIcon('story','📖','Story','')}${appIcon('calendar','📅','Calendar','')}${appIcon('music','🎧','Music','')}${appIcon('settings','⚙️','Settings','')}
+ </div>
+ <div class="dock"><button onclick="openApp('chat')" aria-label="Messages">💬</button><button onclick="openApp('instagram')" aria-label="Instagram">📷</button><button onclick="openApp('gallery')" aria-label="Gallery">🌄</button><button onclick="openApp('notes')" aria-label="Notes">📝</button></div>
+ </div>`;
+}
+function appIcon(id,emoji,label,badge){return `<button class="app-icon" onclick="openApp('${id}')"><span class="iconbox">${emoji}${badge?`<span class="badge">${badge}</span>`:''}</span><span>${label}</span></button>`;}
+function goHome(){renderHome();}
+function openApp(id){currentApp=id;({
+ chat:renderChatList,instagram:renderInstagram,gallery:renderGallery,notes:renderNotes,story:renderStory,calendar:renderCalendar,music:renderMusic,settings:renderSettings
+}[id]||renderHome)();}
+function renderChatList(){
+ screen.innerHTML=`<div class="appview">${appHeader('Messages','Percakapan') }<div class="appbody">
+ <button class="chat-list" onclick="openChat('minjae')"><span class="avatar">☁️</span><span style="flex:1"><strong>Kang Minjae</strong><small>${escapeHtml(chats.minjae.preview)}</small></span><small>16.28</small></button>
+ <button class="chat-list" onclick="openChat('sohee')"><span class="avatar">🌷</span><span style="flex:1"><strong>Park Sohee</strong><small>${escapeHtml(chats.sohee.preview)}</small></span><small>16.21</small></button>
+ <button class="chat-list" onclick="openChat('class')"><span class="avatar">🎒</span><span style="flex:1"><strong>2-3 Class Group</strong><small>${escapeHtml(chats.class.preview)}</small></span><small>15.55</small></button>
+ <div class="card" style="margin-top:20px"><span class="pill">AU tip</span><p>Buka percakapan dan balas pesan untuk melihat respons karakter.</p></div>
+ </div><div class="bottomnav"><button onclick="goHome()">⌂</button><button onclick="openApp('chat')">💬</button><button onclick="openApp('notes')">📝</button></div></div>`;
+}
+function openChat(id){activeChat=id;renderConversation();}
+function renderConversation(){
+ const c=chats[activeChat];
+ screen.innerHTML=`<div class="appview">${appHeader(c.name,'● online') }<div class="appbody" id="messageArea"><div class="messages" id="messages">${c.messages.map(m=>messageHtml(m)).join('')}</div></div>
+ <form class="chat-compose" onsubmit="sendMessage(event)"><input id="chatInput" placeholder="Ketik pesan..." maxlength="240" autocomplete="off" aria-label="Ketik pesan"><button class="send" type="submit" aria-label="Kirim pesan">➤</button></form></div>`;
+ $('#messageArea').scrollTop=$('#messageArea').scrollHeight;
+}
+function messageHtml(m){return `<div class="msg ${m.from==='me'?'me':'them'}">${escapeHtml(m.text)}<time>${m.time||timeNow()}</time></div>`;}
+function sendMessage(e){
+ e.preventDefault();const input=$('#chatInput');const text=input.value.trim();if(!text)return;
+ const c=chats[activeChat];c.messages.push({from:'me',text,time:timeNow()});input.value='';renderConversation();
+ setTimeout(()=>{
+  let reply='Hehe, baik. Sampai besok di sekolah, ya.';
+  if(activeChat==='minjae'){
+   const t=text.toLowerCase();
+   if(/sudah|udah|rumah|sampai/.test(t))reply='Bagus. Istirahat yang cukup, ya. Besok kita berangkat bareng kalau kamu mau.';
+   else if(/makasih|terima kasih|thanks/.test(t))reply='Tidak perlu berterima kasih untuk hal kecil seperti itu, Yuna.';
+   else if(/suka|kangen|rindu/.test(t))reply='...Kamu benar-benar mau membuatku salah tingkah lewat chat?';
+   else reply='Aku membaca pesanmu sambil tersenyum. Nanti ceritakan lebih banyak besok, ya.';
+  } else if(activeChat==='sohee') reply='OKEEE, besok ceritakan semuanya padaku saat istirahat! 🌷';
+  else reply='Ketua kelas: Oke, dicatat. Sampai besok semuanya!';
+  c.messages.push({from:'them',text:reply,time:timeNow()});
+  if(currentApp==='chat' && $('#messages')){const area=$('#messageArea');$('#messages').insertAdjacentHTML('beforeend',messageHtml(c.messages[c.messages.length-1]));area.scrollTop=area.scrollHeight;}
+ },650);
+}
+function renderInstagram(){
+ screen.innerHTML=`<div class="appview">${appHeader('Instagram','seorin.diary') }<div class="appbody">
+ <div class="card" style="display:flex;align-items:center;gap:13px"><div class="avatar" style="width:58px;height:58px">🌸</div><div><strong style="font-size:13px">seorin.diary</strong><p style="margin-top:4px">school days, film photos & little moments</p><small style="color:#99878b">12 posts　·　248 followers</small></div></div>
+ <article class="post"><div class="post-top"><span class="avatar" style="width:31px;height:31px">🌷</span><strong>park.sohee</strong><span style="margin-left:auto">•••</span></div><div class="post-photo">🌸📚</div><div class="post-actions"><button class="${liked.one?'liked':''}" onclick="toggleLike('one',this)">${liked.one?'♥':'♡'}</button><button onclick="toast('Kolom komentar dibuka!')">♧</button><button onclick="toast('Postingan disimpan ke koleksi.')">♧</button></div><div class="post-content"><strong>park.sohee</strong> spring air, library dates and people who blush too easily 🌷<br><span style="color:#a18e91">#seorinhigh #springdiary</span><div id="likeCount" style="font-size:10px;color:#817276;margin-top:5px">${liked.one?'You and 24 others':'24 likes'}</div></div></article>
+ <article class="post"><div class="post-top"><span class="avatar" style="width:31px;height:31px">☁️</span><strong>minjae.k</strong><span style="margin-left:auto">•••</span></div><div class="post-photo">☕🎧</div><div class="post-content">A quiet afternoon is never really quiet when someone is on your mind.</div><div class="post-actions"><button class="${liked.two?'liked':''}" onclick="toggleLike('two',this)">${liked.two?'♥':'♡'}</button><button onclick="toast('Komentar: “Siapa yang kamu pikirkan? 👀”')">♧</button></div></article>
+ </div><div class="bottomnav"><button onclick="goHome()">⌂</button><button onclick="openApp('instagram')">⌕</button><button onclick="openApp('gallery')">＋</button><button onclick="openApp('notes')">♡</button></div></div>`;
+}
+function toggleLike(id,btn){liked[id]=!liked[id];btn.classList.toggle('liked',liked[id]);btn.textContent=liked[id]?'♥':'♡';if(id==='one'){const c=$('#likeCount');if(c)c.textContent=liked[id]?'You and 24 others':'24 likes';}toast(liked[id]?'Kamu menyukai postingan ini.':'Like dibatalkan.');}
+const galleryItems=[['📚','The library corner','Tempat Yuna dan Minjae belajar bersama untuk ujian sastra.'],['🌸','Spring festival','Kelopak sakura berjatuhan di halaman sekolah sore itu.'],['☕','After school','Dua minuman hangat, satu percakapan yang belum selesai.'],['🎧','A shared playlist','Minjae menyimpan lagu favorit Yuna tanpa pernah mengakuinya.'],['🌇','Seoul at 6 PM','Langit senja yang mereka lihat dari gerbang sekolah.'],['💌','Unsent letter','Sebuah surat yang masih tersimpan di antara halaman buku.']];
+function renderGallery(){screen.innerHTML=`<div class="appview">${appHeader('Gallery','little memories') }<div class="appbody"><div class="card"><h3>Seorin, in little moments</h3><p>Ketuk foto untuk membuka cerita di baliknya.</p></div><div class="photo-grid">${galleryItems.map((x,i)=>`<button class="photo" onclick="showPhoto(${i})" aria-label="${x[1]}">${x[0]}</button>`).join('')}</div></div><div class="bottomnav"><button onclick="goHome()">⌂</button><button onclick="openApp('gallery')">▦</button><button onclick="openApp('story')">♡</button></div></div>`;}
+function showPhoto(i){const x=galleryItems[i];const d=document.createElement('div');d.className='gallery-detail';d.innerHTML=`<button onclick="this.parentElement.remove()">×</button><div style="font-size:85px">${x[0]}</div><h2 style="font-family:Georgia,serif;font-weight:400">${x[1]}</h2><p style="font-size:13px;line-height:1.7;color:#eadfe3">${x[2]}</p><button style="position:static;width:auto;border-radius:12px;padding:10px 15px;background:#f0dce2;color:#513c44" onclick="this.parentElement.remove()">Kembali ke galeri</button>`;screen.appendChild(d);}
+function renderNotes(){screen.innerHTML=`<div class="appview">${appHeader('Notes','private little thoughts')}<div class="appbody"><div class="card"><h3>Yuna’s notebook ♡</h3><p>Catatan kecil yang mungkin suatu hari akan berani ia ucapkan.</p></div>${notes.map((n,i)=>`<button class="note" onclick="openNote(${i})"><strong>${escapeHtml(n.title)}</strong><div style="font-size:10px;margin-top:5px;opacity:.8">${escapeHtml(n.body.slice(0,55))}…</div></button>`).join('')}<button class="primary" onclick="newNote()">＋ Tulis catatan baru</button><div id="noteEditor"></div></div></div>`;}
+function openNote(i){const n=notes[i];$('#noteEditor').innerHTML=`<div class="card"><h3>${escapeHtml(n.title)}</h3><p>${escapeHtml(n.body)}</p><button class="secondary" style="margin-top:12px" onclick="$('#noteEditor').innerHTML=''">Tutup</button></div>`;}
+function newNote(){const area=$('#noteEditor');area.innerHTML=`<div class="card"><label style="font-size:11px">Judul</label><input class="field" id="newTitle" placeholder="Judul catatan"><label style="font-size:11px">Isi catatan</label><textarea class="field" id="newBody" rows="3" placeholder="Tulis sesuatu..."></textarea><button class="primary" onclick="saveNote()">Simpan catatan</button></div>`;}
+function saveNote(){const title=$('#newTitle').value.trim(),body=$('#newBody').value.trim();if(!title||!body){toast('Isi judul dan catatan terlebih dahulu.');return;}notes.unshift({title,body});renderNotes();toast('Catatan tersimpan selama sesi ini.');}
+function renderStory(){
+ const opening=`Bel pulang baru saja berbunyi ketika Yuna menyadari buku catatan birunya tertinggal di kelas. Lorong sekolah mulai sepi, hanya suara hujan musim semi yang mengetuk jendela. Saat ia kembali, Minjae duduk di bangkunya, memegang buku itu seolah sedang menunggu seseorang.`;
+ let branch=storyChoice? (storyChoice==='honest'?`“Aku sebenarnya berharap kamu yang datang,” kata Minjae, menatap Yuna dengan senyum kecil. “Aku punya alasan untuk mengantarkan buku ini sendiri.” Yuna merasakan pipinya menghangat. Untuk pertama kalinya, diam di antara mereka tidak terasa canggung.`:`Yuna tertawa kecil dan menyalahkan hujan yang membuatnya kembali. Minjae mengulurkan buku itu, lalu menawarkan payungnya. Mereka berjalan berdampingan menuju gerbang, bahu sesekali bersentuhan, sementara hal-hal yang belum terucap mengikuti mereka seperti lagu pelan.`):'';
+ screen.innerHTML=`<div class="appview">${appHeader('Seoul Days','Episode 01 · The Blue Notebook')}<div class="appbody"><span class="pill">SCHOOL ROMANCE</span><h2 style="font-family:Georgia,serif;font-weight:400;font-size:25px;margin:5px 0 15px">The Blue Notebook</h2><p class="story-text">${opening}</p>${storyChoice?`<p class="story-text">${branch}</p><div class="card"><h3>Episode selesai ♡</h3><p>Pilihanmu membentuk momen kecil dalam cerita ini.</p><button class="primary" style="margin-top:12px" onclick="storyChoice='';renderStory()">Baca ulang episode</button></div>`:`<p class="story-text">Minjae mengangkat wajah. “Aku tahu kamu akan kembali.”</p><p class="story-text">Yuna berhenti di ambang pintu. Ada dua cara untuk menjawab kalimat sederhana itu—dan entah mengapa, keduanya terasa penting.</p><button class="choice" onclick="chooseStory('honest')">① “Kamu menungguku?”</button><button class="choice" onclick="chooseStory('playful')">② “Kamu kebetulan lewat, kan?”</button>`}</div><div class="bottomnav"><button onclick="goHome()">⌂</button><button onclick="openApp('story')">📖</button></div></div>`;
+}
+function chooseStory(c){storyChoice=c;renderStory();}
+function renderCalendar(){screen.innerHTML=`<div class="appview">${appHeader('Calendar','April · Seorin High')}<div class="appbody"><div class="card"><span class="pill">MON · 14</span><h3>Literature class</h3><p>08.30 — Analisis puisi modern bersama kelas 2-3.</p></div><div class="card"><span class="pill">WED · 16</span><h3>Study group</h3><p>15.30 — Perpustakaan lantai dua. Jangan lupa buku sastra!</p></div><div class="card"><span class="pill">FRI · 18</span><h3>Spring School Festival 🌸</h3><p>16.00 — Stan kelas, musik akustik, dan lampu taman sampai senja.</p><button class="primary" style="margin-top:12px" onclick="toast('Pengingat festival ditambahkan selama sesi ini!')">＋ Tambah pengingat</button></div></div></div>`;}
+function renderMusic(){screen.innerHTML=`<div class="appview">${appHeader('Music','songs for this chapter')}<div class="appbody"><div style="text-align:center;padding:25px 0"><div style="width:190px;height:190px;margin:auto;border-radius:22px;background:linear-gradient(135deg,#d9e5dd,#efd3db,#d6c8dc);display:grid;place-items:center;font-size:75px;box-shadow:0 12px 30px #bca9ad55">🎧</div><h2 style="font-family:Georgia,serif;font-weight:400;margin:20px 0 4px">Spring, Slowly</h2><p style="font-size:12px;color:#8a777c">Seorin Study Playlist · fictional AU</p><button id="playBtn" class="primary" style="margin-top:12px" onclick="toggleMusic()">▶ Play preview</button><p id="musicState" style="font-size:10px;color:#9b858b;margin-top:12px">Demo player — no external audio</p></div><div class="card"><h3>Tracklist</h3><p>01. First Bell · 02. Between the Pages · 03. A Walk Home · 04. Almost Confession</p></div></div></div>`;}
+let musicPlaying=false;function toggleMusic(){musicPlaying=!musicPlaying;$('#playBtn').textContent=musicPlaying?'Ⅱ Pause':'▶ Play preview';$('#musicState').textContent=musicPlaying?'Now playing (visual demo)':'Paused';}
+function renderSettings(){screen.innerHTML=`<div class="appview">${appHeader('Settings','your little phone')}<div class="appbody"><div class="card"><h3>About Seoul Days</h3><p>AU romance sekolah interaktif dengan aplikasi fiktif. Seluruh chat, akun, dan karakter di sini adalah bagian dari cerita.</p></div><div class="card"><h3>Data sesi</h3><p>Pesan dan catatan yang kamu buat tersimpan di memori halaman ini selama tab tidak dimuat ulang.</p><button class="secondary" style="margin-top:12px" onclick="if(confirm('Reset chat, likes, dan catatan demo?')){location.reload()}">Reset demo</button></div><div class="card"><h3>Credits</h3><p>Made for a little story about first love, Seoul rain, and things left unsaid.</p></div></div></div>`;}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function updateClock(){const d=new Date();$('#statusTime').textContent=d.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});const c=$('#clock');if(c)c.textContent=d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}
+renderHome();updateClock();setInterval(updateClock,30000);
+</script>
+</body>
+</html>
